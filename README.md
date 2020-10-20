@@ -1,4 +1,4 @@
-#JFL Parser
+# JFL Parser
 
 A parser for JHipster Form Language.
 
