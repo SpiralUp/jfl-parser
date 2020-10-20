@@ -2,12 +2,12 @@
 
 A parser for JHipster Form Language.
 
-The JFL language enables definition of a form as a set of composable subforms.
+The JFL language enables the definition of a form as a set of composable subforms.
 Each form could be based on an **entity** and could have one or more **subforms**.  Of course, subforms could also have a list of subforms.
 
 The form presentation is defined by a **template** used to generate a form.
 
-To define a master - details kind of forms a **parent** and **linked** fields could be defined on subforms.
+To define "master - detail" kind of forms a **parent** and **linked** fields could be defined on subforms.
 
 One form could also have several views, for example a list view, edit view and show view.
 
