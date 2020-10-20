@@ -13,7 +13,7 @@ One form could also have several views, for example a list view, edit view and s
 
 The JFL grammar also enables definition of nested menus.
 
-Definition of the JFL grammar is [here](lib/dsl/grammar.html).
+Definition of the JFL grammar is [here](https://htmlpreview.github.io/?https://github.com/SpiralUp/jfl-parser/blob/master/lib/dsl/grammar.html).
 The parser is generated with *peg.js*.
 
 
