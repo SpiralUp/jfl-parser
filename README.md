@@ -95,12 +95,13 @@ The parser is generated with *peg.js*.
 
 1. Include *jfl-parser* in your code
 
-    
+```
     const formParser = require('jfl-parser');
+```
     
 2. Create function that calls a parser with a list of JFL files
 
-    
+```    
     parseJFL() {
         try {
             const jflObject = formParser.convertToJFL(formParser.parseFromFiles(this.jflFiles));
@@ -120,3 +121,4 @@ The parser is generated with *peg.js*.
             this.error('\nError while parsing entities from JFL\n');
         }
     }
+```
