@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "values",
+            "otherEntityName": "sysParamValue",
+            "otherEntityRelationshipName": "parameter"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "seq",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StandardRecordStatus",
+            "fieldValues": "NOT_ACTIVE,ACTIVE"
+        },
+        {
+            "fieldName": "validFrom",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validUntil",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20170818053801",
+    "entityTableName": "system_parameter",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "backend"
+}

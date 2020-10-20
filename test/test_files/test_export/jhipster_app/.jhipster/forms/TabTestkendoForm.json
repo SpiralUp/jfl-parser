@@ -1,0 +1,277 @@
+{
+    "name": "tabTestkendoForm",
+    "title": "Tab test - primeng content",
+    "body": {
+        "entity": "Objekt",
+        "template": "tab-primeng",
+        "properties": [
+            {
+                "name": "navigationGrid",
+                "value": "navigation2"
+            }
+        ],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "type",
+                "title": "Type",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "name",
+                        "type"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": [
+            {
+                "name": "navigation2",
+                "title": "Navigation",
+                "body": {
+                    "entity": "Objekt",
+                    "template": "navigator-grid-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "name"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "tab1Primeng",
+                "title": "Tab1",
+                "body": {
+                    "entity": "Objekt",
+                    "template": "tab-content-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "name"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "tab2Primeng",
+                "title": "Tab2",
+                "body": {
+                    "entity": "Objekt",
+                    "template": "tab-content-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "name"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            }
+        ]
+    }
+}

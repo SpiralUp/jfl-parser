@@ -1,0 +1,327 @@
+{
+    "name": "objektRel2Form",
+    "title": "Object rel form 2",
+    "body": {
+        "entity": "ObjektRelType",
+        "template": "rel-form-primeng",
+        "properties": [
+            {
+                "name": "leftElement",
+                "value": "objekt1"
+            },
+            {
+                "name": "rightElement",
+                "value": "objekt2"
+            },
+            {
+                "name": "relationType",
+                "value": "type"
+            },
+            {
+                "name": "leftGrid",
+                "value": "leftObjektSubform"
+            },
+            {
+                "name": "rightGrid",
+                "value": "rightObjektSubform"
+            },
+            {
+                "name": "bottomGrid",
+                "value": "objektRelSubform"
+            }
+        ],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "type1",
+                "title": "Type1",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "type2",
+                "title": "Type2",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "type",
+                        "objekt1",
+                        "objekt2"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": [
+            {
+                "name": "leftObjektSubform",
+                "title": "Left Objekt",
+                "body": {
+                    "entity": "Objekt",
+                    "template": "primeng-grid-subform",
+                    "properties": [],
+                    "parent": [
+                        "type1"
+                    ],
+                    "linked": [
+                        "type"
+                    ],
+                    "fields": [
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "name"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "rightObjektSubform",
+                "title": "Right Objekt",
+                "body": {
+                    "entity": "Objekt",
+                    "template": "primeng-grid-subform",
+                    "properties": [],
+                    "parent": [
+                        "type2"
+                    ],
+                    "linked": [
+                        "type"
+                    ],
+                    "fields": [
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "name"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "objektRelSubform",
+                "title": "Relations",
+                "body": {
+                    "entity": "ObjektRel",
+                    "template": "primeng-grid-subform",
+                    "properties": [],
+                    "parent": [
+                        "id",
+                        "#parentTag"
+                    ],
+                    "linked": [
+                        "objekt1",
+                        "type"
+                    ],
+                    "fields": [
+                        {
+                            "name": "type",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "objekt1",
+                            "title": "Objekt1",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "objekt2",
+                            "title": "Objekt2",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "objekt2",
+                                    "type"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            }
+        ]
+    }
+}

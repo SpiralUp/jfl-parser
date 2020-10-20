@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cntcts",
+            "otherEntityName": "personContact",
+            "otherEntityRelationshipName": "pers"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "UNKNOWN,FEMALE,MALE"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StandardRecordStatus",
+            "fieldValues": "NOT_ACTIVE,ACTIVE"
+        },
+        {
+            "fieldName": "validFrom",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validUntil",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20170818053759",
+    "entityTableName": "person",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "backend"
+}

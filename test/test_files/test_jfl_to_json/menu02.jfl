@@ -1,0 +1,2 @@
+menu mnuName01 title "MenuTitle01"
+menu mnuName02 title "MenuTitle01" form formName1 parent mnuName01

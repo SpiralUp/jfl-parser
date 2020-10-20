@@ -1,0 +1,84 @@
+{
+    "name": "objetRelTypeForm",
+    "title": "Object rel type",
+    "body": {
+        "entity": "ObjektRelType",
+        "template": "primeng-grid",
+        "properties": [],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "type1",
+                "title": "Type1",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "type2",
+                "title": "Type2",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "name",
+                        "type1",
+                        "type2"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "edit",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "admin"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "show",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": []
+    }
+}

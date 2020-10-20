@@ -1,0 +1,664 @@
+
+/**
+* person form
+*/
+form personForm title "Persons" {
+    entity Person
+    template "default"
+    fields {
+        id title "Code" required  // id
+        name title "Name"  // name
+        gender title "Gender" {
+                control: "dropDown",
+                dataSource: "genderTable"
+            }
+        status title "Status" default "ACTIVE"
+        validFrom title "Valid from" default "today"
+        validUntil title "Valid until"
+    }
+    views {
+        list {
+            fields id, name
+            roles admin, user
+        }
+        edit {
+            fields all except version
+            roles all
+        }
+        show {
+            fields all except version
+            roles all
+        }
+    }
+
+    /**
+    * subform
+    */
+    form personContactSubform title "Contacts" {
+        entity PersonContact
+        template "subform"
+        parent fields id
+        linked fields pers
+        fields {
+            id title "Code"
+            tcontact title "Type" default "PHONE"
+            contact title "Contact"
+            isPreferedContact title "Prefered"
+            description title "Description"
+            seq title "Sequence"
+            status title "Status" default "ACTIVE"
+            validFrom title "Valid from" default "now"
+            validUntil title "Valid until"
+        }
+        views {
+            list {
+                fields tcontact, contact, isPreferedContact, description
+                roles all
+            }
+            edit {
+                fields all except version
+                roles all
+            }
+            show {
+                fields all except version
+                roles all
+            }
+        }
+    }
+}
+
+
+form personFormPrimengGen title "Primeng persons gen" {
+    entity Person
+    template "primeng-grid"
+    fields {
+        id title "Code" required
+        name title "Name"
+        gender title "Gender"
+        user title "User"
+        status title "Status" default "ACTIVE"
+        validFrom title "Valid from" default "today"
+        validUntil title "Valid until"
+    }
+    views {
+        list {
+            fields id, name, user, gender, status
+            roles admin, user
+        }
+        edit {
+            fields all except version
+            roles all
+        }
+        show {
+            fields all except version
+            roles all
+        }
+    }
+
+    form personContactPrimengSubform title "Contacts" {
+        entity PersonContact
+        template "primeng-grid-subform"
+        parent fields id
+        linked fields pers
+        fields {
+            id title "Code"
+            tcontact title "Type" default "PHONE"
+            contact title "Contact"
+            isPreferedContact title "Prefered"
+            description title "Description"
+            seq title "Sequence"
+            status title "Status" default "ACTIVE"
+            validFrom title "Valid from" default "now"
+            validUntil title "Valid until"
+        }
+        views {
+            list {
+                fields tcontact, contact, isPreferedContact, description
+                roles all
+            }
+            edit {
+                fields all except version
+                roles all
+            }
+            show {
+                fields all except version
+                roles all
+            }
+        }
+    }
+
+}
+
+form systemParameterForm title "System parameters" {
+    entity SystemParameter
+    template "default"
+    fields {
+        code title "Code",
+        name title "Name",
+        description title "Description",
+        seq title "Sequence",
+        status title "Status" default "ACTIVE",
+        validFrom title "Valid from" default "today",
+        validUntil title "Valid until"
+    }
+    views {
+        list {
+            fields code, name, description
+            roles all
+        }
+        edit {
+            fields all
+            roles admin
+        }
+        show {
+            fields all
+            roles all
+        }
+    }
+
+    form sysParamValueSubform title "Values" {
+        entity SysParamValue
+        template "subform"
+        parent fields id
+        linked fields parameter
+        fields {
+            level title "Level" default "WHOLE_SYSTEM" required,
+            value title "Value",
+            party title "Org Unit",
+            relatedUser title "User",
+            tenant title "Tenant",
+            status title "Status" default "ACTIVE",
+            validFrom title "Valid from" default "today",
+            validUntil title "Valid until"
+        }
+        views {
+            list {
+                fields level, value, party, relatedUser, tenant
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+}
+
+form objetTypeForm title "Object type" {
+    entity ObjektType
+    template "primeng-grid"
+    fields {
+        name title "Name",
+    }
+    views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+    }
+}
+
+
+form objetRelTypeForm title "Object rel type" {
+    entity ObjektRelType
+    template "primeng-grid"
+    fields {
+        name title "Name",
+        type1 title "Type1",
+        type2 title "Type2"
+    }
+    views {
+            list {
+                fields name, type1, type2
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+    }
+}
+
+form objektRelForm title "Object rel form" {
+    entity ObjektRelType
+    template "rel-form-primeng"
+    properties {
+        leftElement: objekt1,
+        rightElement: objekt2,
+        relationType: type,
+        leftGrid: leftObjektSubform,
+        rightGrid: rightObjektSubform,
+        bottomGrid: objektRelSubform
+    }
+    fields {
+        type title "Type",
+        type1 title "Type1",
+        type2 title "Type2"
+    }
+    views {
+            form {
+                fields type, objekt1, objekt2
+                roles all
+            }
+    }
+
+    form leftObjektSubform title "Objekt" {
+        entity Objekt
+        template "primeng-grid-subform"
+        parent fields type1
+        linked fields type
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form rightObjektSubform title "Objekt" {
+        entity Objekt
+        template "primeng-grid-subform"
+        parent fields type2
+        linked fields type
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form objektRelSubform title "Relations" {
+        entity ObjektRel
+        template "primeng-grid-subform"
+        parent fields id, "#parentTag"
+        linked fields objekt1, type
+        fields {
+            type title "Type",
+            objekt1 title "Objekt1",
+            objekt2 title "Objekt2"
+        }
+        views {
+            list {
+                fields objekt2, type
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+}
+
+form objektRel2Form title "Object rel form 2" {
+    entity ObjektRelType
+    template "rel-form-primeng"
+    properties {
+        leftElement: objekt1,
+        rightElement: objekt2,
+        relationType: type,
+        leftGrid: leftObjektSubform,
+        rightGrid: rightObjektSubform,
+        bottomGrid: objektRelSubform
+    }
+    fields {
+        name title "Name",
+        type1 title "Type1",
+        type2 title "Type2"
+    }
+    views {
+            list {
+                fields type, objekt1, objekt2
+                roles all
+            }
+    }
+
+    form leftObjektSubform title "Left Objekt" {
+        entity Objekt
+        template "primeng-grid-subform"
+        parent fields type1
+        linked fields type
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form  rightObjektSubform title "Right Objekt" {
+        entity Objekt
+        template "primeng-grid-subform"
+        parent fields type2
+        linked fields type
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form objektRelSubform title "Relations" {
+        entity ObjektRel
+        template "primeng-grid-subform"
+        parent fields id, "#parentTag"
+        linked fields objekt1, type
+        fields {
+            type title "Type",
+            objekt1 title "Objekt1",
+            objekt2 title "Objekt2"
+        }
+        views {
+            list {
+                fields objekt2, type
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+}
+
+form comboTestForm title "Combo test" {
+    entity ObjektRelType
+    template "combo-primeng"
+    properties {
+        leftElement: objekt1,
+        rightElement: objekt2,
+        relationType: type,
+        leftGrid: leftObjektSubform,
+        rightGrid: rightObjektSubform,
+        bottomGrid: objektRelSubform
+    }
+    fields {
+        name title "Name",
+        type1 title "Type1",
+        type2 title "Type2"
+    }
+    views {
+            list {
+                fields type, objekt1, objekt2
+                roles all
+            }
+    }
+
+    form leftObjektSubform title "Left Objekt" {
+        entity Objekt
+        template "primeng-grid-subform"
+        parent fields type1
+        linked fields type
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+}
+
+form tabTestForm title "tab test" {
+    entity Objekt
+    template "tab-primeng"
+    properties {
+        navigationGrid: navigation
+    }
+    fields {
+            name title "Name",
+            type title "Type"
+    }
+    views {
+            list {
+                fields name, type
+                roles all
+            }
+    }
+
+    form navigation title "Navigation" {
+        entity Objekt
+        template "navigator-grid-primeng"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+
+    form tab1Subform title "Tab1" {
+        entity Objekt
+        template "tab-content"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form tab2Subform title "Tab2" {
+        entity Objekt
+        template "tab-content"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+}
+
+form tabTestkendoForm title "Tab test - primeng content" {
+    entity Objekt
+    template "tab-primeng"
+    properties {
+        navigationGrid: navigation2
+    }
+    fields {
+            name title "Name",
+            type title "Type"
+    }
+    views {
+            list {
+                fields name, type
+                roles all
+            }
+    }
+
+    form navigation2 title "Navigation" {
+        entity Objekt
+        template "navigator-grid-primeng"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+
+    form tab1Primeng title "Tab1" {
+        entity Objekt
+        template "tab-content-primeng"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+    form tab2Primeng title "Tab2" {
+        entity Objekt
+        template "tab-content-primeng"
+        fields {
+            name title "Name",
+            type title "Type"
+        }
+        views {
+            list {
+                fields name
+                roles all
+            }
+            edit {
+                fields all
+                roles admin
+            }
+            show {
+                fields all
+                roles all
+            }
+        }
+    }
+
+}

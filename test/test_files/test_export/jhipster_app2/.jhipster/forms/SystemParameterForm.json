@@ -1,0 +1,245 @@
+{
+    "name": "systemParameterForm",
+    "title": "System parameters",
+    "body": {
+        "entity": "SystemParameter",
+        "template": "default",
+        "properties": [],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "code",
+                "title": "Code",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "description",
+                "title": "Description",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "seq",
+                "title": "Sequence",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "status",
+                "title": "Status",
+                "validations": [],
+                "default": "ACTIVE",
+                "properties": []
+            },
+            {
+                "name": "validFrom",
+                "title": "Valid from",
+                "validations": [],
+                "default": "today",
+                "properties": []
+            },
+            {
+                "name": "validUntil",
+                "title": "Valid until",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "code",
+                        "name",
+                        "description"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "edit",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "admin"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "show",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": [
+            {
+                "name": "sysParamValueSubform",
+                "title": "Values",
+                "body": {
+                    "entity": "SysParamValue",
+                    "template": "subform",
+                    "properties": [],
+                    "parent": [
+                        "id"
+                    ],
+                    "linked": [
+                        "parameter"
+                    ],
+                    "fields": [
+                        {
+                            "name": "level",
+                            "title": "Level",
+                            "validations": [],
+                            "default": "WHOLE_SYSTEM",
+                            "properties": []
+                        },
+                        {
+                            "name": "required",
+                            "title": null,
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "value",
+                            "title": "Value",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "party",
+                            "title": "Org Unit",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "relatedUser",
+                            "title": "User",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "tenant",
+                            "title": "Tenant",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "status",
+                            "title": "Status",
+                            "validations": [],
+                            "default": "ACTIVE",
+                            "properties": []
+                        },
+                        {
+                            "name": "validFrom",
+                            "title": "Valid from",
+                            "validations": [],
+                            "default": "today",
+                            "properties": []
+                        },
+                        {
+                            "name": "validUntil",
+                            "title": "Valid until",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "level",
+                                    "value",
+                                    "party",
+                                    "relatedUser",
+                                    "tenant"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            }
+        ]
+    }
+}

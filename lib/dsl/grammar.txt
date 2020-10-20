@@ -1,0 +1,415 @@
+/**
+ * Grammar used to generate JHipster Form DSL.
+ */
+
+{
+  function addUniqueElements(array1, array2) {
+       if (array2) {
+         for (let i = 0; i < array2.length; i++) {
+           if (array1.indexOf(array2[i]) === -1) {
+             array1.push(array2[i]);
+           }
+         }
+       }
+       return array1;
+     }
+
+  function addElements(array1, array2) {
+    if (array2) {
+      for (let i = 0; i < array2.length; i++) {
+          array1.push(array2[i]);
+      }
+    }
+    return array1;
+  }
+
+  function flattenArray(array) {
+    var newArray = [];
+    for (let i = 0; i < array.length; i ++) {
+      if (!array[i].length) {
+        newArray.push(array[i]);
+      } else {
+        for (let j = 0; j < array[i].length; j++) {
+          newArray.push(array[i][j]);
+        }
+      }
+    }
+    return newArray;
+  }
+
+  function addCardinalityToRelationships(cardinality, relationships) {
+    if (!relationships) {
+      return;
+    }
+    for (let i = 0; i < relationships.length; i++) {
+      relationships[i].cardinality = cardinality;
+    }
+  }
+
+  function formatComment(comment) {
+    if (!comment) {
+      return undefined;
+    }
+    var parts = comment.trim().split('\n');
+    if (parts.length === 1 && parts[0].indexOf('*') !== 0) {
+      return parts[0];
+    }
+    return parts.reduce(function(previousValue, currentValue) {
+      // newlines in the middle of the comment should stay to achieve:
+      // multiline comments entered by user drive unchanged from JDL studio to generated domain class
+      var delimiter = '';
+      if (previousValue !== '') {
+        delimiter = '\n';
+      }
+      return previousValue.concat(delimiter, currentValue.trim().replace(/[*]*\s*/, ''));
+    }, '');
+  }
+
+  const parsed = {
+    forms: [],
+    menus: [],
+  };
+}
+
+start = p:prog { return p; }
+
+prog
+  = SPACE* fd:formDecl SPACE* p:prog {
+    parsed.forms = addUniqueElements([fd], parsed.forms);
+    return parsed;
+  }
+  / SPACE* md:menuDecl SPACE* p:prog {
+    parsed.menus = flattenArray(addUniqueElements([md], parsed.menus));
+    return parsed;
+  }
+  / '' { return parsed; }
+
+// forms
+formDecl
+  = jd:comment?
+    SPACE* FORM SPACE* f:FORM_NAME
+    SPACE* t:optionalTitle?
+    SPACE* fb:formBody? SPACE*  {
+    return { name: f, title: t, body: fb, comment: formatComment(jd) };
+  }
+  / FORM SPACE* f:FORM_NAME SPACE* fb:formBody? { return { name: f, title: t, body: fb, comment: '' }; }
+
+optionalTitle
+  = TITLE SPACE* t:title {return t}
+
+formBody
+  = '{'
+  	SPACE* e:formBodyEntity?
+    SPACE* t:formBodyTemplate?
+    SPACE* pfl:formBodyParentFields?
+    SPACE* lfl:formBodyLinkedFields?
+    SPACE* prop:formBodyProperties?
+    SPACE* fdl:formBodyFields?
+    SPACE* vdl:formBodyViews?
+    SPACE* sdl:subformDeclList?
+    SPACE* '}' { return {entity:e, template:t, properties:prop, parent:pfl, linked:lfl, fields:fdl, views:vdl, subforms:sdl} ; }
+  / '' { return { entity:"", template:"", properties:[], parent:[], linked:[], fields:[], views:[], subforms:[] }; }
+
+formBodyEntity
+  = ENTITY SPACE* e:ENTITY_NAME { return e; }
+  / '' { return "" }
+
+formBodyTemplate
+  = TEMPLATE SPACE* e:title { return e; }
+  / '' { return "" }
+
+formBodyParentFields
+  = PARENT SPACE* FIELDS SPACE* pfl:exactFieldAndConstantList { return pfl; }
+  / '' { return []; }
+
+formBodyLinkedFields
+  = LINKED SPACE* FIELDS SPACE* lfl:exactFieldList { return lfl; }
+  / '' { return []; }
+
+
+formBodyFields
+  = FIELDS SPACE* '{' fdl:fieldDeclList '}' SPACE* ','? { return fdl;}
+  / '' { return []; }
+
+formBodyProperties
+  = PROPERTIES SPACE* '{' prop:propertyDeclList '}' SPACE* ','? { return prop;}
+  / '' { return []; }
+
+formFieldProperties
+  = '{' prop:propertyDeclList '}' SPACE* ','? { return prop;}
+  / '' { return []; }
+
+formBodyViews
+  = VIEWS SPACE* '{'
+    SPACE* vd:viewDeclList?
+    '}' SPACE* ','? { return vd;}
+  / '' { return []; }
+
+viewDeclList
+  = SPACE* vd:viewDecl ','? SPACE* vdl:viewDeclList  {
+  	return addUniqueElements([vd], vdl );
+    }
+  / '' { return []; }
+
+subformDeclList
+  = SPACE* fd:formDecl ','? SPACE* fdl:subformDeclList  {
+  	return addUniqueElements([fd], fdl );
+    }
+  / '' { return []; }
+
+fieldDecl
+ = com:comment?
+   SPACE* f:FIELD_NAME
+   SPACE* t:optionalTitle?
+   SPACE* vl:validationList?
+   SPACE* dflt:fieldDefault?
+   SPACE* props:formFieldProperties?
+   SPACE_WITHOUT_NEWLINE* com2:comment?
+ { return { name: f, title: t, validations: vl, default: dflt, properties:props, comment: formatComment( com || com2) }; }
+
+fieldDeclList
+  = SPACE* fd:fieldDecl
+    SPACE_WITHOUT_NEWLINE* ','? SPACE* fdl:fieldDeclList
+  {
+    return addUniqueElements([fd], fdl );
+  }
+  / '' { return []; }
+
+validationList
+  = v:validation SPACE_WITHOUT_NEWLINE* vl:validationList { return addUniqueElements([v], vl); }
+  / '' { return []; }
+
+title
+  = t:StringLiteral { return t }
+
+fieldDefault
+= DEFAULT SPACE* d:StringLiteral {return d}
+/ '' { return null;}
+
+
+// common way to declare an form list
+formList
+  = f:FORM_NAME SPACE* sub:formListTail? { return addUniqueElements([f], sub); }
+  / STAR SPACE*  { return ['*']; }
+  / ALL SPACE*  { return ['*']; }
+
+formListTail
+  = SPACE* ',' SPACE* f:FORM_NAME SPACE* sub:formListTail?
+  { return addUniqueElements([f], sub)}
+
+// field list
+fieldList
+  =
+  ALL SPACE*  { return ['*']; }
+  / STAR SPACE*  { return ['*']; }
+  / f:FIELD_NAME SPACE* sub:fieldListTail? { return addUniqueElements([f], sub); }
+
+exactFieldList
+ = f:FIELD_NAME SPACE* sub:fieldListTail? { return addUniqueElements([f], sub); }
+
+exactFieldAndConstantList
+ = f:FIELD_NAME SPACE* sub:fieldAndConstantListTail? { return addUniqueElements([f], sub); }
+ / f:NUMBER SPACE* sub:fieldAndConstantListTail? { return addElements([f], sub);  }
+ / f:StringLiteral SPACE* sub:fieldAndConstantListTail? { return addElements([f], sub);  }
+
+fieldAndConstantListTail
+ = SPACE* ',' SPACE* f:FIELD_NAME SPACE* sub:fieldAndConstantListTail? { return addUniqueElements([f], sub); }
+ / SPACE* ',' SPACE* f:NUMBER SPACE* sub:fieldAndConstantListTail? { return addElements([f], sub); }
+ / SPACE* ',' SPACE* f:StringLiteral SPACE* sub:fieldAndConstantListTail? { return addElements([f], sub);  }
+
+fieldListTail
+  = SPACE* ',' SPACE* f:FORM_NAME SPACE* sub:fieldListTail?
+  { return addUniqueElements([f], sub)}
+
+// exclusion
+exclusion
+  = EXCEPT SPACE+ sub:exclusionSub { return sub; }
+  / '' { return [];}
+
+exclusionSub
+  = e:FORM_NAME SPACE* ',' SPACE* sub:exclusionSub { return addUniqueElements([e], sub); }
+  / e:FORM_NAME { return [e]; }
+
+// declaration of fields in view
+viewFieldsList
+  = FIELDS SPACE+ decl:fieldList SPACE* ex:exclusion? SPACE*
+    { return {included:decl, excluded:ex};}
+
+// declaration of roles in view
+viewRolesList
+  = ROLES SPACE+ decl:fieldList SPACE* ex:exclusion? SPACE*  {
+    return {included:decl, excluded:ex};
+  }
+
+// view declaration
+viewDecl
+= SPACE* SPACE* n:VIEW_NAME
+  SPACE* '{'
+  	SPACE* fl:viewFieldsList?
+  	SPACE* rl:viewRolesList?
+  SPACE* '}' SPACE*
+  {return {view:n, fields:fl, roles:rl };}
+
+// property declaration
+
+propertyValue
+  = s:StringLiteral {
+  	return s;
+  }
+  / f:FIELD_NAME { return f;}
+  / d:NUMBER_DECIMAL { return d;}
+   / n:NUMBER { return n;}
+
+
+propertyDecl
+ = SPACE* p:PROPERTY_NAME
+   SPACE* ':'
+   SPACE* v:propertyValue
+   SPACE_WITHOUT_NEWLINE* com2:comment?
+ { return { name: p, value: v, comment: formatComment( com2) }; }
+
+propertyDeclList
+  = SPACE* fd:propertyDecl
+    SPACE_WITHOUT_NEWLINE* ','? SPACE* fdl:propertyDeclList
+  {
+    return addUniqueElements([fd], fdl );
+  }
+  / '' { return []; }
+
+// menus
+menuDecl
+  = jd:comment? SPACE* MENU SPACE* m:MENU_NAME
+            SPACE_WITHOUT_NEWLINE* TITLE SPACE_WITHOUT_NEWLINE* t:title
+            SPACE_WITHOUT_NEWLINE* FORM SPACE_WITHOUT_NEWLINE* f:FORM_NAME
+            SPACE* p: menuParentDecl?
+            SPACE* mb:menuBody? SPACE*  {
+    return { name: m, title: t, form:f, parent: p, body: mb, comment: formatComment(jd) };
+  }
+  / jd:comment? SPACE* MENU SPACE* m:MENU_NAME
+                SPACE_WITHOUT_NEWLINE* TITLE SPACE_WITHOUT_NEWLINE* t:title
+                SPACE* p: menuParentDecl?
+                SPACE* mb:menuBody? SPACE*  {
+        return { name: m, title: t, form:null, parent: p, body: mb, comment: formatComment(jd) };
+      }
+  / MENU SPACE* m:MENU_NAME
+  			SPACE* TITLE SPACE* t:title
+            SPACE* FORM SPACE* f:FORM_NAME
+            SPACE* p: menuParentDecl?
+  			SPACE* mb:menuBody?
+            { return { name: m, title: t, form:f, parent: p, body: mb, comment: formatComment(jd) }; }
+
+menuBody
+  = '{' SPACE* mdl:menuDeclList SPACE* '}' { return mdl; }
+  / '' { return []; }
+
+menuDeclList
+  = SPACE* md:menuDecl ','? SPACE* mdl:menuDeclList  {
+  	return addUniqueElements([md], mdl );
+    }
+  / '' { return []; }
+
+menuParentDecl
+  = PARENT SPACE_WITHOUT_NEWLINE* p:MENU_NAME
+    {return p;}
+
+// ------------------
+StringLiteral "string"
+  = '"' chars:DoubleStringCharacter* '"' {
+      return chars.join("");
+    }
+  / "'" chars:SingleStringCharacter* "'" {
+      return  chars.join("");
+    }
+
+DoubleStringCharacter
+  = !('"' / "\\" / LineTerminator) SourceCharacter { return text(); }
+
+
+SingleStringCharacter
+  = !("'" / "\\" / LineTerminator) SourceCharacter { return text(); }
+
+SourceCharacter
+  = .
+
+LineTerminator
+  = [\n\r\u2028\u2029]
+
+validation
+  = REQUIRED { return { key: 'required', value: '' }; }
+  / MINLENGTH SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'minlength', value: int }; }
+  / MAXLENGTH SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'maxlength', value: int }; }
+  / MINBYTES SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'minbytes', value: int }; }
+  / MAXBYTES SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'maxbytes', value: int }; }
+  / MAX SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'max', value: int };}
+  / MIN SPACE* '(' SPACE* int:INTEGER SPACE* ')' { return { key: 'min', value: int };}
+  / PATTERN SPACE* '('  APOSTROPHE regex:REGEX APOSTROPHE SPACE* ')' { return { key: 'pattern', value: regex }; }
+
+// Comments
+comment = commentStart notAComment:notAComment* commentStop { return notAComment.join(''); }
+commentStart = '/*' [*]*
+commentStop = [*]+ '/'
+// a completely ignored comment, will not be a Javadoc comment
+notAComment = !commentStop !commentStart char:. { return char; }
+
+// Constants
+ENTITY = 'entity'
+TABLE = 'table'
+FORM = 'form'
+SUBFORM = 'subform'
+FIELDS = 'fields'
+MENU = 'menu'
+TITLE = 'title'
+PARENT = 'parent'
+//RELATIONSHIP = 'relationship'
+//ENUM = 'enum'
+// Relationship types
+//ONE_TO_ONE = 'OneToOne'
+//ONE_TO_MANY = 'OneToMany'
+//MANY_TO_ONE = 'ManyToOne'
+//MANY_TO_MANY = 'ManyToMany'
+// Options
+ALL = 'all'
+STAR = '*'
+FOR = 'for'
+WITH = 'with'
+EXCEPT = 'except'
+// validations
+REQUIRED = 'required'
+MINLENGTH = 'minlength'
+MAXLENGTH = 'maxlength'
+MINBYTES = 'minbytes'
+MAXBYTES = 'maxbytes'
+MAX = 'max'
+MIN = 'min'
+PATTERN = 'pattern'
+LIST = 'list'
+EDIT = 'edit'
+SHOW = 'show'
+VIEW = 'view'
+TEMPLATE = 'template'
+VIEWS = 'views'
+ROLES = 'roles'
+LINKED = 'linked'
+DEFAULT = 'default'
+PROPERTIES = 'properties'
+
+ENUMNAME = head:[A-Z]tail:[A-z0-9]* { return `${head}${tail.join('')}`; }
+ENUMPROP = underscore:[_]*head:[A-Z0-9]tail:[A-Z0-9_]* {
+    return `${underscore.join('')}${head}${tail.join('')}`;
+  }
+
+INTEGER = negative:'-'?int:[0-9]+ { return parseInt(`${(negative ? negative : '') + int.join('')}`, 10); }
+INJECTED_FIELD_NAME = head:[a-zA-Z]tail:[A-z0-9()]* { return `${head}${tail.join('')}`; }
+ENTITY_NAME = head:[A-Z]tail:[A-z0-9]* { return `${head}${tail.join('')}`; }
+FORM_NAME = head:[a-zA-Z]tail:[A-z0-9]* { return `${head}${tail.join('')}`; }
+VIEW_NAME = head:[a-zA-Z]tail:[A-z0-9]* { return `${head}${tail.join('')}`; }
+MENU_NAME = head:[a-zA-Z]tail:[A-z0-9]* { return `${head}${tail.join('')}`; }
+FIELD_NAME = head:[a-zA-Z]tail:[A-z.0-9]* { return `${head}${tail.join('')}`; }
+PROPERTY_NAME = head:[a-zA-Z]tail:[A-z.0-9]* { return `${head}${tail.join('')}`; }
+NUMBER = head:[0-9]tail:[0-9]* { return `${head}${tail.join('')}`; }
+NUMBER_DECIMAL = head:[0-9]tail:[0-9]*point:[.]tailDec:[0-9]* { return `${head}${tail.join('')}.${tailDec.join('')}`; }
+SPACE = ['\n'|'\t'|'\r'|' '|\u2028|\u2029]
+SPACE_WITHOUT_NEWLINE = ['\t'|' '|\u2028|\u2029]
+REGEX = word:[A-z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/? ]* { return word.join('') }
+APOSTROPHE = ["|']
+

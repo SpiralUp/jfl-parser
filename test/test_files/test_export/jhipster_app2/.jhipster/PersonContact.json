@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pers",
+            "otherEntityName": "person",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "isPreferedContact",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "seq",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StandardRecordStatus",
+            "fieldValues": "NOT_ACTIVE,ACTIVE"
+        },
+        {
+            "fieldName": "validFrom",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validUntil",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tcontact",
+            "fieldType": "ContactTypes",
+            "fieldValues": "PHONE,MOBILE_PHONE,FAX,MAIL,EMAIL"
+        }
+    ],
+    "changelogDate": "20170818053800",
+    "entityTableName": "person_contact",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "backend"
+}

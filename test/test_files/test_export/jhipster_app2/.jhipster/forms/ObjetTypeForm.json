@@ -1,0 +1,68 @@
+{
+    "name": "objetTypeForm",
+    "title": "Object type",
+    "body": {
+        "entity": "ObjektType",
+        "template": "primeng-grid",
+        "properties": [],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "name"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "edit",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "admin"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "show",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": []
+    }
+}

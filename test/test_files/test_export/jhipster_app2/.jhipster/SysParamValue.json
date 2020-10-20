@@ -1,0 +1,60 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "relatedUser",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parameter",
+            "otherEntityName": "systemParameter",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valueJson",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StandardRecordStatus",
+            "fieldValues": "NOT_ACTIVE,ACTIVE"
+        },
+        {
+            "fieldName": "validFrom",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validUntil",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "level",
+            "fieldType": "SysParamLevel",
+            "fieldValues": "WHOLE_SYSTEM,TENANT,ORGANIZATION_UNIT,USER"
+        },
+        {
+            "fieldName": "party",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tenant",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170818053802",
+    "entityTableName": "sys_param_value",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "backend"
+}

@@ -1,0 +1,252 @@
+{
+    "name": "personForm",
+    "title": "Persons",
+    "body": {
+        "entity": "Person",
+        "template": "default",
+        "properties": [],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "id",
+                "title": "Code",
+                "validations": [
+                    {
+                        "key": "required",
+                        "value": ""
+                    }
+                ],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "gender",
+                "title": "Gender",
+                "validations": [],
+                "default": null,
+                "properties": []
+            },
+            {
+                "name": "status",
+                "title": "Status",
+                "validations": [],
+                "default": "ACTIVE",
+                "properties": []
+            },
+            {
+                "name": "validFrom",
+                "title": "Valid from",
+                "validations": [],
+                "default": "today",
+                "properties": []
+            },
+            {
+                "name": "validUntil",
+                "title": "Valid until",
+                "validations": [],
+                "default": null,
+                "properties": []
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "id",
+                        "name"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "admin",
+                        "user"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "edit",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": [
+                        "version"
+                    ]
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "show",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": [
+                        "version"
+                    ]
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": [
+            {
+                "name": "personContactSubform",
+                "title": "Contacts",
+                "body": {
+                    "entity": "PersonContact",
+                    "template": "subform",
+                    "properties": [],
+                    "parent": [
+                        "id"
+                    ],
+                    "linked": [
+                        "pers"
+                    ],
+                    "fields": [
+                        {
+                            "name": "id",
+                            "title": "Code",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "tcontact",
+                            "title": "Type",
+                            "validations": [],
+                            "default": "PHONE",
+                            "properties": []
+                        },
+                        {
+                            "name": "contact",
+                            "title": "Contact",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "isPreferedContact",
+                            "title": "Prefered",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "description",
+                            "title": "Description",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "seq",
+                            "title": "Sequence",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        },
+                        {
+                            "name": "status",
+                            "title": "Status",
+                            "validations": [],
+                            "default": "ACTIVE",
+                            "properties": []
+                        },
+                        {
+                            "name": "validFrom",
+                            "title": "Valid from",
+                            "validations": [],
+                            "default": "now",
+                            "properties": []
+                        },
+                        {
+                            "name": "validUntil",
+                            "title": "Valid until",
+                            "validations": [],
+                            "default": null,
+                            "properties": []
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "tcontact",
+                                    "contact",
+                                    "isPreferedContact",
+                                    "description"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": [
+                                    "version"
+                                ]
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": [
+                                    "version"
+                                ]
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                },
+                "comment": "subform"
+            }
+        ]
+    },
+    "comment": "person form"
+}

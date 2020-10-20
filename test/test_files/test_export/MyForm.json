@@ -1,0 +1,1436 @@
+{
+    "name": "documentDetailForm",
+    "title": "Documents",
+    "body": {
+        "entity": "Documents",
+        "template": "tab-primeng",
+        "properties": [
+            {
+                "name": "navigationGrid",
+                "value": "navigationForm"
+            }
+        ],
+        "parent": [],
+        "linked": [],
+        "fields": [
+            {
+                "name": "code",
+                "title": "Code",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "name",
+                "title": "Name",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "tdocument",
+                "title": "Type",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "docYear",
+                "title": "Year",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "docNumber",
+                "title": "Doc number",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "owner",
+                "title": "Owner",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "investor",
+                "title": "Investor",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "contractor",
+                "title": "Contractor",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "contract",
+                "title": "Contract",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "project",
+                "title": "Project",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "phase",
+                "title": "Phase",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "description",
+                "title": "Description",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "warehouse",
+                "title": "Warehouse",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "budget",
+                "title": "Budget",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "globalCode",
+                "title": "Global code",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "hasComments",
+                "title": "Has comments",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "hasAttachments",
+                "title": "Has attachments",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "status",
+                "title": "Status",
+                "validations": [],
+                "default": "ACTIVE"
+            },
+            {
+                "name": "state",
+                "title": "State",
+                "validations": [],
+                "default": null
+            },
+            {
+                "name": "validFrom",
+                "title": "Valid from",
+                "validations": [],
+                "default": "today"
+            },
+            {
+                "name": "validUntil",
+                "title": "Valid until",
+                "validations": [],
+                "default": null
+            }
+        ],
+        "views": [
+            {
+                "view": "list",
+                "fields": {
+                    "included": [
+                        "id",
+                        "name",
+                        "tdocument",
+                        "docYear",
+                        "docNumber",
+                        "contract",
+                        "investor",
+                        "contractor"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "edit",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "admin"
+                    ],
+                    "excluded": []
+                }
+            },
+            {
+                "view": "show",
+                "fields": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                },
+                "roles": {
+                    "included": [
+                        "*"
+                    ],
+                    "excluded": []
+                }
+            }
+        ],
+        "subforms": [
+            {
+                "name": "navigationForm",
+                "title": "Navigation",
+                "body": {
+                    "entity": "Documents",
+                    "template": "navigator-grid-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "code",
+                            "title": "Code",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "tdocument",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "docYear",
+                            "title": "Year",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "docNumber",
+                            "title": "Doc number",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "owner",
+                            "title": "Owner",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "investor",
+                            "title": "Investor",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "contractor",
+                            "title": "Contractor",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "contract",
+                            "title": "Contract",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "project",
+                            "title": "Project",
+                            "validations": [],
+                            "default": null
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "id",
+                                    "name",
+                                    "tdocument",
+                                    "docYear",
+                                    "docNumber",
+                                    "contract",
+                                    "investor",
+                                    "contractor"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "t1DocumentsForm",
+                "title": "Basic info",
+                "body": {
+                    "entity": "Documents",
+                    "template": "tab-content-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "code",
+                            "title": "Code",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "name",
+                            "title": "Name",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "tdocument",
+                            "title": "Type",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "docYear",
+                            "title": "Year",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "docNumber",
+                            "title": "Doc number",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "owner",
+                            "title": "Owner",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "investor",
+                            "title": "Investor",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "contractor",
+                            "title": "Contractor",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "contract",
+                            "title": "Contract",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "project",
+                            "title": "Project",
+                            "validations": [],
+                            "default": null
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "t2DocumentsForm",
+                "title": "Additional info",
+                "body": {
+                    "entity": "Documents",
+                    "template": "tab-content-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "project",
+                            "title": "Project",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "phase",
+                            "title": "Phase",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "warehouse",
+                            "title": "Warehouse",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "budget",
+                            "title": "Budget",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "globalCode",
+                            "title": "Global code",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "hasComments",
+                            "title": "Has comments",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "hasAttachments",
+                            "title": "Has attachments",
+                            "validations": [],
+                            "default": null
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "t3DocumentsForm",
+                "title": "Note",
+                "body": {
+                    "entity": "Documents",
+                    "template": "tab-content-primeng",
+                    "properties": [],
+                    "parent": [],
+                    "linked": [],
+                    "fields": [
+                        {
+                            "name": "description",
+                            "title": "Description",
+                            "validations": [],
+                            "default": null
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": []
+                }
+            },
+            {
+                "name": "documentsItemSubform",
+                "title": "Service items",
+                "body": {
+                    "entity": "DocumentItem",
+                    "template": "primeng-grid-subform",
+                    "properties": [],
+                    "parent": [
+                        "id"
+                    ],
+                    "linked": [
+                        "doc"
+                    ],
+                    "fields": [
+                        {
+                            "name": "doc",
+                            "title": "Document",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "product",
+                            "title": "Service",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "price",
+                            "title": "Price",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "quantity",
+                            "title": "Quantity",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "amount",
+                            "title": "Amount",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "discountAmount",
+                            "title": "Discount",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "discountPercent",
+                            "title": "Discount %",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "prodPrice",
+                            "title": "Price ID",
+                            "validations": [],
+                            "default": null
+                        },
+                        {
+                            "name": "status",
+                            "title": "Status",
+                            "validations": [],
+                            "default": "ACTIVE"
+                        },
+                        {
+                            "name": "validFrom",
+                            "title": "Valid from",
+                            "validations": [],
+                            "default": "today"
+                        },
+                        {
+                            "name": "validUntil",
+                            "title": "Valid until",
+                            "validations": [],
+                            "default": null
+                        }
+                    ],
+                    "views": [
+                        {
+                            "view": "list",
+                            "fields": {
+                                "included": [
+                                    "product",
+                                    "price",
+                                    "quantity",
+                                    "amount"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "edit",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": [
+                                    "prodPrice"
+                                ]
+                            },
+                            "roles": {
+                                "included": [
+                                    "admin"
+                                ],
+                                "excluded": []
+                            }
+                        },
+                        {
+                            "view": "show",
+                            "fields": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            },
+                            "roles": {
+                                "included": [
+                                    "*"
+                                ],
+                                "excluded": []
+                            }
+                        }
+                    ],
+                    "subforms": [
+                        {
+                            "name": "materialDocItemDetSubform",
+                            "title": "Material",
+                            "body": {
+                                "entity": "DocumentItemDet",
+                                "template": "primeng-grid-subform",
+                                "properties": [],
+                                "parent": [
+                                    "id",
+                                    "doc",
+                                    "1"
+                                ],
+                                "linked": [
+                                    "item",
+                                    "doc",
+                                    "presentedOnTab"
+                                ],
+                                "fields": [
+                                    {
+                                        "name": "item",
+                                        "title": "Item ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "presentedOnTab",
+                                        "title": "Tab",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "doc",
+                                        "title": "Document",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "product",
+                                        "title": "Service",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "price",
+                                        "title": "Price",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "quantity",
+                                        "title": "Quantity",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "title": "Amount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountAmount",
+                                        "title": "Discount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountPercent",
+                                        "title": "Discount %",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "prodPrice",
+                                        "title": "Price ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "status",
+                                        "title": "Status",
+                                        "validations": [],
+                                        "default": "ACTIVE"
+                                    },
+                                    {
+                                        "name": "validFrom",
+                                        "title": "Valid from",
+                                        "validations": [],
+                                        "default": "today"
+                                    },
+                                    {
+                                        "name": "validUntil",
+                                        "title": "Valid until",
+                                        "validations": [],
+                                        "default": null
+                                    }
+                                ],
+                                "views": [
+                                    {
+                                        "view": "list",
+                                        "fields": {
+                                            "included": [
+                                                "doc",
+                                                "price",
+                                                "quantity",
+                                                "amount"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "edit",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": [
+                                                "prodPrice"
+                                            ]
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "admin"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "show",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    }
+                                ],
+                                "subforms": []
+                            }
+                        },
+                        {
+                            "name": "workDocItemDetSubform",
+                            "title": "Work",
+                            "body": {
+                                "entity": "DocumentItemDet",
+                                "template": "primeng-grid-subform",
+                                "properties": [],
+                                "parent": [
+                                    "id",
+                                    "doc",
+                                    "2"
+                                ],
+                                "linked": [
+                                    "item",
+                                    "doc",
+                                    "presentedOnTab"
+                                ],
+                                "fields": [
+                                    {
+                                        "name": "item",
+                                        "title": "Item ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "presentedOnTab",
+                                        "title": "Tab",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "doc",
+                                        "title": "Document",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "product",
+                                        "title": "Service",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "price",
+                                        "title": "Price",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "quantity",
+                                        "title": "Quantity",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "title": "Amount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountAmount",
+                                        "title": "Discount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountPercent",
+                                        "title": "Discount %",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "prodPrice",
+                                        "title": "Price ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "status",
+                                        "title": "Status",
+                                        "validations": [],
+                                        "default": "ACTIVE"
+                                    },
+                                    {
+                                        "name": "validFrom",
+                                        "title": "Valid from",
+                                        "validations": [],
+                                        "default": "today"
+                                    },
+                                    {
+                                        "name": "validUntil",
+                                        "title": "Valid until",
+                                        "validations": [],
+                                        "default": null
+                                    }
+                                ],
+                                "views": [
+                                    {
+                                        "view": "list",
+                                        "fields": {
+                                            "included": [
+                                                "doc",
+                                                "price",
+                                                "quantity",
+                                                "amount"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "edit",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": [
+                                                "prodPrice"
+                                            ]
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "admin"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "show",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    }
+                                ],
+                                "subforms": []
+                            }
+                        },
+                        {
+                            "name": "assetDocItemDetSubform",
+                            "title": "Asset",
+                            "body": {
+                                "entity": "DocumentItemDet",
+                                "template": "primeng-grid-subform",
+                                "properties": [],
+                                "parent": [
+                                    "id",
+                                    "doc",
+                                    "3"
+                                ],
+                                "linked": [
+                                    "item",
+                                    "doc",
+                                    "presentedOnTab"
+                                ],
+                                "fields": [
+                                    {
+                                        "name": "item",
+                                        "title": "Item ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "presentedOnTab",
+                                        "title": "Tab",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "doc",
+                                        "title": "Document",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "product",
+                                        "title": "Service",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "price",
+                                        "title": "Price",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "quantity",
+                                        "title": "Quantity",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "title": "Amount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountAmount",
+                                        "title": "Discount",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "discountPercent",
+                                        "title": "Discount %",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "prodPrice",
+                                        "title": "Price ID",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "status",
+                                        "title": "Status",
+                                        "validations": [],
+                                        "default": "ACTIVE"
+                                    },
+                                    {
+                                        "name": "validFrom",
+                                        "title": "Valid from",
+                                        "validations": [],
+                                        "default": "today"
+                                    },
+                                    {
+                                        "name": "validUntil",
+                                        "title": "Valid until",
+                                        "validations": [],
+                                        "default": null
+                                    }
+                                ],
+                                "views": [
+                                    {
+                                        "view": "list",
+                                        "fields": {
+                                            "included": [
+                                                "doc",
+                                                "price",
+                                                "quantity",
+                                                "amount"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "edit",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": [
+                                                "prodPrice"
+                                            ]
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "admin"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "show",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    }
+                                ],
+                                "subforms": []
+                            }
+                        },
+                        {
+                            "name": "documentCommentSubform",
+                            "title": "Comments",
+                            "body": {
+                                "entity": "DocumentComment",
+                                "template": "primeng-grid-subform",
+                                "properties": [],
+                                "parent": [
+                                    "id"
+                                ],
+                                "linked": [
+                                    "doc"
+                                ],
+                                "fields": [
+                                    {
+                                        "name": "doc",
+                                        "title": "Document",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "tcomment",
+                                        "title": "Type",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "name",
+                                        "title": "Name",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "description",
+                                        "title": "Description",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "status",
+                                        "title": "Status",
+                                        "validations": [],
+                                        "default": "ACTIVE"
+                                    },
+                                    {
+                                        "name": "validFrom",
+                                        "title": "Valid from",
+                                        "validations": [],
+                                        "default": "today"
+                                    },
+                                    {
+                                        "name": "validUntil",
+                                        "title": "Valid until",
+                                        "validations": [],
+                                        "default": null
+                                    }
+                                ],
+                                "views": [
+                                    {
+                                        "view": "list",
+                                        "fields": {
+                                            "included": [
+                                                "tcomment",
+                                                "name",
+                                                "description"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "edit",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "admin"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "show",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    }
+                                ],
+                                "subforms": []
+                            }
+                        },
+                        {
+                            "name": "documentAttachmentSubform",
+                            "title": "Attachment",
+                            "body": {
+                                "entity": "DocumentAttachment",
+                                "template": "primeng-grid-subform",
+                                "properties": [],
+                                "parent": [
+                                    "id"
+                                ],
+                                "linked": [
+                                    "doc"
+                                ],
+                                "fields": [
+                                    {
+                                        "name": "doc",
+                                        "title": "Document",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "tattachment",
+                                        "title": "Type",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "name",
+                                        "title": "Name",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "description",
+                                        "title": "Description",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "attachment",
+                                        "title": "Attachment",
+                                        "validations": [],
+                                        "default": null
+                                    },
+                                    {
+                                        "name": "status",
+                                        "title": "Status",
+                                        "validations": [],
+                                        "default": "ACTIVE"
+                                    },
+                                    {
+                                        "name": "validFrom",
+                                        "title": "Valid from",
+                                        "validations": [],
+                                        "default": "today"
+                                    },
+                                    {
+                                        "name": "validUntil",
+                                        "title": "Valid until",
+                                        "validations": [],
+                                        "default": null
+                                    }
+                                ],
+                                "views": [
+                                    {
+                                        "view": "list",
+                                        "fields": {
+                                            "included": [
+                                                "attachment",
+                                                "name",
+                                                "description"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "edit",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "admin"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    },
+                                    {
+                                        "view": "show",
+                                        "fields": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        },
+                                        "roles": {
+                                            "included": [
+                                                "*"
+                                            ],
+                                            "excluded": []
+                                        }
+                                    }
+                                ],
+                                "subforms": []
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

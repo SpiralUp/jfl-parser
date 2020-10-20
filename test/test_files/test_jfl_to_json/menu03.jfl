@@ -1,0 +1,5 @@
+menu mnuName01 title "MenuTitle01" {
+    menu mnuName02 title "MenuTitle02" form formName2
+    menu mnuName03 title "MenuTitle03" form formName3
+}
+
