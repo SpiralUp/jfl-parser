@@ -7,7 +7,6 @@ const toFromFilePath = require('../lib/reader/json_file_reader').toFormFilePath;
 const toMenuFilePath = require('../lib/reader/json_file_reader').toMenuFilePath;
 const readEntityJSON = require('../lib/reader/json_file_reader').readFormJSON;
 const ObjectUtils = require('../lib/utils/object_utils');
-const StringUtils = require('../lib/utils/string_utils');
 
 module.exports = {
     /* JFL reading */
@@ -23,5 +22,5 @@ module.exports = {
     readFormJSON: readEntityJSON,
     toFilePath,
     toFormFilePath: toFromFilePath,
-    toMenuFilePath,
+    toMenuFilePath
 };

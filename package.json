@@ -55,14 +55,12 @@
     "lint-fix": "npm run lint -- --fix",
     "test": "npm run lint && nyc mocha",
     "test:watch": "mocha --watch --reporter min",
-    "bundle": "node ./scripts/bundle.js && webpack",
     "posttest": "nyc --reporter=text-summary report",
-    "prepare": "npm run test && npm run diagrams && npm run bundle",
+    "prepare": "npm run test && npm run diagram",
     "release": "git push && git push --tags && npm publish",
-    "commit-dist": "git add dist && git add lib/dsl/gen && git commit --allow-empty -m \"Update dist\"",
-    "release-patch": "npm run commit-dist && npm version patch -a -m \"Update to %s\" && npm run release",
-    "release-minor": "npm run commit-dist && npm version minor -a -m \"Update to %s\" && npm run release",
-    "release-major": "npm run commit-dist && npm version major -a -m \"Update to %s\" && npm run release"
+    "release-patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "release-minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release-major": "npm version major -a -m \"Update to %s\" && npm run release"
   },
   "directories": {
     "lib": "lib",

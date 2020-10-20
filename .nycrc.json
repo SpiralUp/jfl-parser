@@ -1,0 +1,16 @@
+{
+  "cache": true,
+  "check-coverage": true,
+  "exclude": [
+    "lib/dsl/*.js",
+    "test/**/*.js"
+  ],
+  "reporter": [
+    "lcov",
+    "html"
+  ],
+  "lines": 50,
+  "statements": 50,
+  "functions": 50,
+  "branches": 50
+}
