@@ -27,7 +27,7 @@ module.exports = {
     /* JSON utils */
     ObjectUtils,
     createJHipsterFormsFolder,
-    readFormJSON: readFormJSON,
+    readFormJSON,
     toFilePath,
     toFormFilePath: toFromFilePath,
     toMenuFilePath,
